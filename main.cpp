@@ -54,8 +54,9 @@ struct Kitchen
 
     struct Chef 
     {
-        bool isCooking = true;
-        bool isTeaching = true;
+        bool isCooking;
+        bool isTeaching;
+        bool isMasterChef;
         char codeName = 'C';
     };
 
@@ -69,11 +70,23 @@ struct Kitchen
         Chef creator;
     };
 
-    void startCookingClass (Chef chef, Recipe recipe);
-
     Recipe currentRecipe;
     Chef masterChef;
+
+    void startCookingClass (Chef c, Recipe r);
 };
+
+//Implementation 1
+void Kitchen::startCookingClass (Chef chef, Recipe recipe)
+{
+    chef.isTeaching = true;
+    recipe.currentStep = 0;
+
+    if (chef.codeName == recipe.creator.codeName) 
+    {
+        chef.isMasterChef = true;
+    }
+}
 
 /*
  2)
@@ -97,7 +110,7 @@ struct KioskLocator
         char prefix = 'K';
         Kiosk k;
 
-        Kiosk getClosestKiosk();
+        KList getClosestKiosks();
     };
 
     Kiosk closestKiosk;
@@ -105,6 +118,25 @@ struct KioskLocator
     void refreshList (KList k, int initSize);
     void getClosestKiosk (KList klist);
 };
+
+//Implementation 2
+void KioskLocator::refreshList (KList klist, int initialSize) 
+{
+    // fetch initialSize entries of data from klist 
+}
+
+KioskLocator::KList KioskLocator::KList::getClosestKiosks() 
+{
+    // return a KList of closestKiosks
+}
+
+void KioskLocator::getClosestKiosk (KList klist) 
+{
+    // set closest kiosk from a KList
+    refreshList (klist,3);
+    closestKiosk.name = 'A';
+    closestKiosk.distance = 0.0f;
+}
 
 /*
  3)
@@ -121,8 +153,24 @@ struct ADSR
         double stageDur = 0.5;
     };
 
-    Stage currentStage (ADSR env1);
+    Stage currentStage;
+    Stage getCurrentStage();
 };
+
+//Implementation 3
+ADSR::Stage ADSR::getCurrentStage() 
+{   
+    if ( currentStage.stageDur > 0 ) 
+    {
+        duration += currentStage.stageDur;
+    } 
+    else
+    {
+        //go to next stage or end
+    }
+}
+
+
 
 /*
  4)
