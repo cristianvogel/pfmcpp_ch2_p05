@@ -54,7 +54,7 @@ struct Kitchen
     unsigned int numberOfAssistants = 3;
     unsigned int numberOfStudents = 25;
 
-
+	FIXME remove blank lines
     struct Chef 
     {
         bool isCooking = true;
@@ -90,7 +90,7 @@ struct KioskLocator
     int starRating = 5;
     char name = 'k';
     
-
+	FIXME remove blank lines
     struct Kiosk 
     {
         float distance = 20.0f;
@@ -129,7 +129,7 @@ struct ADSR
     };
 
     Stage currentStage (Stage s);
-
+	FIXME remove blank lines
 };
 
 /*
@@ -158,7 +158,7 @@ struct Form
         };
 
         CheckBox checkBox;
-
+		FIXME remove blank lines
     };
 
     TextField fullName;
@@ -215,7 +215,7 @@ struct FunkyBufferPlayer
     {
         double sizeInSamples;
         double getSizeInSamples (int bufferID);
-        
+		FIXME remove blank lines
         
         struct SecondaryBuffer
         {
@@ -228,7 +228,7 @@ struct FunkyBufferPlayer
 
         bool clearBuffer (int bufferID);
         bool copyToSecondaryBuffer ( SecondaryBuffer bufferID);
-
+		FIXME remove blank lines
     };
 };
 
@@ -248,13 +248,13 @@ struct FlyingFaderBank
 
         void update( int id, float friction, float accel, float velocity);
         float getValue( int id);
-        
+        FIXME remove blank lines
     };
 
     Fader fader1, fader2, fader3;
 
     void updateFaders( int numberOfFaders);
-    
+    FIXME remove blank lines
 };
 
 
@@ -269,13 +269,13 @@ struct ScaleGenerator
     
     struct Scale 
     {
-        
-
+        FIXME remove blank lines
+		FIXME remove blank lines
         Scale generateScaleForOctaves (int octaves, double stepSize);
     };
 
     Scale goldenRatio;
-    
+    FIXME remove blank lines
 };
 
 
@@ -305,9 +305,9 @@ struct Meter
             void draw (int segmentIndex);
         };
 
-    
+    FIXME indentation
     void updateSegment (int meterID, Segment s);
-
+	FIXME remove blank lines
     };
 };
 
@@ -321,8 +321,8 @@ struct StepSequencer
     int numberOfSteps = 8;
     double tempo = 120;
     unsigned int id = 1;
-
-     struct StepData 
+	
+     struct StepData FIXME indentation
     {
         struct PitchClass 
         {
