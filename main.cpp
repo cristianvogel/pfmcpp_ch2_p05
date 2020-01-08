@@ -43,18 +43,15 @@ struct CarWash            //1) a U.D.T. with a random number of member variables
     Car myCar;  //5) a member variable whose type is a UDT.
 };
 
-
 /*
  1)
  */
-
 struct Kitchen
 {
     unsigned int numberChefs = 1;
     unsigned int numberOfAssistants = 3;
     unsigned int numberOfStudents = 25;
 
-	FIXME remove blank lines
     struct Chef 
     {
         bool isCooking = true;
@@ -78,11 +75,9 @@ struct Kitchen
     Chef masterChef;
 };
 
-
 /*
  2)
  */
-
 struct KioskLocator
 {
     bool isOpen = true;
@@ -90,7 +85,6 @@ struct KioskLocator
     int starRating = 5;
     char name = 'k';
     
-	FIXME remove blank lines
     struct Kiosk 
     {
         float distance = 20.0f;
@@ -112,7 +106,6 @@ struct KioskLocator
     void getClosestKiosk (KList klist);
 };
 
-
 /*
  3)
  */
@@ -128,8 +121,7 @@ struct ADSR
         double stageDur = 0.5;
     };
 
-    Stage currentStage (Stage s);
-	FIXME remove blank lines
+    Stage currentStage (ADSR env1);
 };
 
 /*
@@ -147,27 +139,24 @@ struct Form
         int alpha = 32;
         char fieldID = 'a';
         bool hasCheckBox = true;
-       
-        struct CheckBox
-        {
-            float size = 1.0f;
-            char icon = '#';
-            bool isChecked = false;
-
-            void animateCheckBox( CheckBox c, char fieldID);
-        };
-
-        CheckBox checkBox;
-		FIXME remove blank lines
     };
 
+    struct CheckBox
+    {
+        float size = 16.0f;
+        char icon = '#';
+        bool isChecked = false;
+
+        void animateCheckBox (char fieldID, CheckBox c);
+    };
+
+    CheckBox checkBox;
     TextField fullName;
 
-    bool mouseOver (TextField t);
+    bool mouseOver (TextField fullName);
     bool formIsVisible (char formID);
-
+    void clearAllCheckBoxes (Form f);
 };
-
 
 /*
  5)
@@ -197,9 +186,8 @@ struct PresetLibrary
 
     PresetName generateRandomName (char bank, int presetNumber, float seed);
     bool updatePresets();
-    PresetLibrary dumpBank(char bank);
+    PresetLibrary dumpBank (char bank);
 };
-
 
 /*
  6)
@@ -215,7 +203,6 @@ struct FunkyBufferPlayer
     {
         double sizeInSamples;
         double getSizeInSamples (int bufferID);
-		FIXME remove blank lines
         
         struct SecondaryBuffer
         {
@@ -227,11 +214,9 @@ struct FunkyBufferPlayer
         };
 
         bool clearBuffer (int bufferID);
-        bool copyToSecondaryBuffer ( SecondaryBuffer bufferID);
-		FIXME remove blank lines
+        bool copyToSecondaryBuffer (SecondaryBuffer bufferID);
     };
 };
-
 
 /*
  7)
@@ -246,17 +231,14 @@ struct FlyingFaderBank
         bool physics = true;
         float friction, accel, velocity = 0.5f;
 
-        void update( int id, float friction, float accel, float velocity);
-        float getValue( int id);
-        FIXME remove blank lines
+        void update (int id, float friction, float accel, float velocity);
+        float getValue (int id);
     };
 
     Fader fader1, fader2, fader3;
 
-    void updateFaders( int numberOfFaders);
-    FIXME remove blank lines
+    void updateFaders (int numberOfFaders);
 };
-
 
 /*
  8)
@@ -269,15 +251,11 @@ struct ScaleGenerator
     
     struct Scale 
     {
-        FIXME remove blank lines
-		FIXME remove blank lines
         Scale generateScaleForOctaves (int octaves, double stepSize);
     };
 
     Scale goldenRatio;
-    FIXME remove blank lines
 };
-
 
 /*
  9)
@@ -305,12 +283,10 @@ struct Meter
             void draw (int segmentIndex);
         };
 
-    FIXME indentation
-    void updateSegment (int meterID, Segment s);
-	FIXME remove blank lines
+
+        void updateSegment (int meterID, Segment s);
     };
 };
-
 
 /*
  10)
@@ -322,14 +298,14 @@ struct StepSequencer
     double tempo = 120;
     unsigned int id = 1;
 	
-     struct StepData FIXME indentation
+    struct StepData
     {
         struct PitchClass 
         {
             double frequency;
             double pitch;
 
-            double calculatePitchFromFreq( double frequency );
+            double calculatePitchFromFreq (double frequency );
         };
 
         PitchClass p;
@@ -337,8 +313,8 @@ struct StepSequencer
         double duration = 1.0;
     };
 
-    int getCurrentStage( unsigned int id );
-    void stepSequence( unsigned int id, bool isPlaying );
+    int getCurrentStage (unsigned int id );
+    void stepSequence (unsigned int id, bool isPlaying );
     
     StepData stepData;
     StepData getCurrentStepData();
