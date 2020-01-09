@@ -81,7 +81,6 @@ void Kitchen::startCookingClass (Chef chef, Recipe recipe)
 {
     chef.isTeaching = true;
     recipe.currentStep = 0;
-
     if (chef.codeName == recipe.creator.codeName) 
     {
         chef.isMasterChef = true;
@@ -120,14 +119,17 @@ struct KioskLocator
 };
 
 //Implementation 2
-void KioskLocator::refreshList (KList klist, int initialSize) 
+void KioskLocator::refreshList (KList klist, int ) 
 {
     // fetch initialSize entries of data from klist 
+    klist.getClosestKiosks();
+
 }
 
 KioskLocator::KList KioskLocator::KList::getClosestKiosks() 
 {
     // return a KList of closestKiosks
+    return {};
 }
 
 void KioskLocator::getClosestKiosk (KList klist) 
@@ -168,9 +170,8 @@ ADSR::Stage ADSR::getCurrentStage()
     {
         //go to next stage or end
     }
+    return {};
 }
-
-
 
 /*
  4)
@@ -206,6 +207,30 @@ struct Form
     void clearAllCheckBoxes (Form f);
 };
 
+//Implementation 4
+bool Form::mouseOver (TextField) 
+{
+    //return true when mouse is over a certain field
+return {};
+}
+
+bool Form::formIsVisible (char) 
+{
+    //check if form is visible
+    //make it visible if not
+    //return a state
+    return {};
+}
+
+void Form::CheckBox::animateCheckBox (char , CheckBox)
+{
+    /*
+        do funky animation for a UDT CheckBox
+        related to a UDT Field of a certain id
+    */
+}
+
+
 /*
  5)
  */
@@ -232,10 +257,40 @@ struct PresetLibrary
         RandomName rn;
     };
 
-    PresetName generateRandomName (char bank, int presetNumber, float seed);
     bool updatePresets();
+    PresetName generateRandomName (char bank, int presetNumber, float seed);
     PresetLibrary dumpBank (char bank);
 };
+
+//Implementation 5
+
+bool PresetLibrary::updatePresets() 
+{
+    // refresh presetname list
+    return {};
+}
+
+PresetLibrary::PresetName PresetLibrary::generateRandomName (char, int, float) 
+{
+    //come up with a random name for a presetNumber in a bank
+    return {};
+}
+
+PresetLibrary PresetLibrary::dumpBank (char)
+{
+    //dump a whole bank into or from a UDT PresetLibrary
+    //return a full or 'empty' PresetLibrary type
+    return {};
+}
+
+char PresetLibrary::PresetName::RandomName::getCharAt (int, int)
+{
+    /*
+        get some random icon or char/string as preset name
+        from a 2D Collection somewhere
+    */
+    return {};
+}
 
 /*
  6)
@@ -266,6 +321,34 @@ struct FunkyBufferPlayer
     };
 };
 
+//Implementation 6
+
+double getSizeInSamples (int) 
+{
+    //return the size of a Buffer instance
+    return {};
+}
+
+bool FunkyBufferPlayer::Buffer::clearBuffer (int)
+{
+    // empty some buffer really fast
+    // return when done
+    return {};
+}
+
+bool FunkyBufferPlayer::Buffer::copyToSecondaryBuffer (SecondaryBuffer) 
+{
+    //duplicate a buffer into an instance of a SecondaryBuffer
+    return {};
+}
+
+void FunkyBufferPlayer::Buffer::SecondaryBuffer::reverse (int)
+{
+    //some kind of reversi on an instance of a SecondaryBuffer
+    //Get Funky
+}
+
+
 /*
  7)
  */
@@ -288,6 +371,23 @@ struct FlyingFaderBank
     void updateFaders (int numberOfFaders);
 };
 
+//Implementation 7
+void FlyingFaderBank::updateFaders (int)
+{
+    //get status and values of a number of faders
+}
+
+void FlyingFaderBank::Fader::update (int, float, float, float)
+{
+    //update physics animation of a fader
+}
+
+float FlyingFaderBank::Fader::getValue (int)
+{
+    //return some value from fader data
+    return {};
+}
+
 /*
  8)
  */
@@ -305,6 +405,13 @@ struct ScaleGenerator
     Scale goldenRatio;
 };
 
+//Implementation 8
+ScaleGenerator::Scale ScaleGenerator::Scale::generateScaleForOctaves (int, double)
+{
+    //naive scale generation returns as/into ScaleGenerator::Scale UDT
+    return {};
+}
+
 /*
  9)
  */
@@ -319,7 +426,7 @@ struct Meter
     {   
         int w,h,x,y;
         float scaleFactor = 0.5f;
-        int numberOfSegments = 256;
+        int numberOfSegments = 32;
 
         struct Segment
         {
@@ -330,11 +437,25 @@ struct Meter
             void destroy();
             void draw (int segmentIndex);
         };
-
-
         void updateSegment (int meterID, Segment s);
     };
 };
+
+//Implementation 9
+void Meter::VerticalMeter::updateSegment (int, Meter::VerticalMeter::Segment)
+{
+    //update segment graphics style
+}
+
+void Meter::VerticalMeter::Segment::draw (int)
+{
+    //draw an instance of a Segment UDT
+}
+
+void Meter::VerticalMeter::Segment::destroy()
+{
+    //remove an instance of a Segment UDT from memory
+}
 
 /*
  10)
@@ -368,6 +489,23 @@ struct StepSequencer
     StepData getCurrentStepData();
 };
 
+//Implementation 10
+StepSequencer::StepData StepSequencer::getCurrentStepData() 
+{
+    // get all current StepData return in a StepData UDT 
+    return {};
+}
+
+void StepSequencer::stepSequence(unsigned int, bool)
+{
+    //move to next stage in sequence
+} 
+
+int StepSequencer::getCurrentStage(unsigned int)
+{
+    //get stage number of current row with an ID
+    return {};
+} 
 
 #include <iostream>
 int main()
