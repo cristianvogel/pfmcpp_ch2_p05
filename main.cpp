@@ -1,25 +1,76 @@
 /*
- //approved
- Chapter 2 Part 5 Task:
- User-Defined Types
- 
- 1) write 10 user-defined types, each with a random number of member variables
-    try to make the member variables have names that are related to the user-defined type.
- 
- 2) give the member variables relevant data types
- 
- 3) add a couple member functions.  
-    make the function parameter list for those member functions use some of your User-Defined Types
- 
- 4) make 2 of the 10 user-defined types be nested class
- 
- 5) One of your UDTs should only use UDTs for its member variable types.   
-     No primitives allowed!
- 
- 6) After you finish defining each type, click the [run] button.  Clear up any errors or warnings as best you can.
- 
+  Chapter 2 Part 6 
+ Implementations tasks
+ tasks
+ 1) write the definition for the Type that leftFoot and rightFoot are instantiations of.
+    don't forget to define and implement the member functions 'stepForward()' and 'stepSize()'
+    you should be able to deduce the return type of those functions based on their usage in Person::run()
+    You'll need to insert the Person struct from the video in the space below.
+ */
+
+struct Person 
+{
+    int age;
+    int height;
+    float hairlength;
+    float GPA;
+    unsigned int SATScore;
+    float distanceTravelled;
+
+    struct LeftFoot
+    {
+        float stepSize() 
+        {
+            //get stepSize
+            return {};
+        }
+
+        void stepForward()
+        {
+            //take a step forward
+        }
+    };
+
+    struct RightFoot
+    {
+        float stepSize() 
+        {
+            //get stepSize
+            return {};
+        }
+
+        void stepForward()
+        {
+            //take a step forward
+        }
+    };
+
+    LeftFoot leftFoot;
+    RightFoot rightFoot;
+
+    void run (int, bool);
+};
+
+void Person::run (int, bool startWithLeftFoot)
+{
+    if (startWithLeftFoot == true) 
+    {
+        leftFoot.stepForward();
+        rightFoot.stepForward();
+    }
+    else
+    {
+        rightFoot.stepForward();
+        leftFoot.stepForward();
+    };
+    distanceTravelled += leftFoot.stepSize() + rightFoot.stepSize();
+}
+
+ /*
+ 2) provide implementations for the member functions you declared in your 10 user-defined types from the previous video outside of your UDT definitions.
+ 3) be sure to write the correct full qualified name for the nested type's member functions.
+ 4) After you finish defining each type/function, click the [run] button.  Clear up any errors or warnings as best you can.
  Commit your changes by clicking on the Source Control panel on the left, entering a message, and click [Commit and push].
- 
  Wait for my code review.
  */
 
