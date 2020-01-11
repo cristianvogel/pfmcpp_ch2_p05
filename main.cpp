@@ -17,10 +17,9 @@ struct Person
     unsigned int SATScore;
     float distanceTravelled;
 
-FIXME LeftFoot and RightFoot struct guts are identical.  Just make a Foot struct.  leftFoot and rightFoot should be instances of it
-    struct LeftFoot
+    struct Foot
     {
-        float stepSize() 
+        float stepSize()
         {
             //get stepSize
             return {};
@@ -32,22 +31,8 @@ FIXME LeftFoot and RightFoot struct guts are identical.  Just make a Foot struct
         }
     };
 
-    struct RightFoot
-    {
-        float stepSize() 
-        {
-            //get stepSize
-            return {};
-        }
-
-        void stepForward()
-        {
-            //take a step forward
-        }
-    };
-
-    LeftFoot leftFoot;
-    RightFoot rightFoot;
+    Foot leftFoot;
+    Foot rightFoot;
 
     void run (int, bool);
 };
