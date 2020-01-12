@@ -1,25 +1,62 @@
 /*
- //approved
- Chapter 2 Part 5 Task:
- User-Defined Types
- 
- 1) write 10 user-defined types, each with a random number of member variables
-    try to make the member variables have names that are related to the user-defined type.
- 
- 2) give the member variables relevant data types
- 
- 3) add a couple member functions.  
-    make the function parameter list for those member functions use some of your User-Defined Types
- 
- 4) make 2 of the 10 user-defined types be nested class
- 
- 5) One of your UDTs should only use UDTs for its member variable types.   
-     No primitives allowed!
- 
- 6) After you finish defining each type, click the [run] button.  Clear up any errors or warnings as best you can.
- 
+  Chapter 2 Part 6 
+ Implementations tasks
+ tasks
+ 1) write the definition for the Type that leftFoot and rightFoot are instantiations of.
+    don't forget to define and implement the member functions 'stepForward()' and 'stepSize()'
+    you should be able to deduce the return type of those functions based on their usage in Person::run()
+    You'll need to insert the Person struct from the video in the space below.
+ */
+
+struct Person 
+{
+    int age;
+    int height;
+    float hairlength;
+    float GPA;
+    unsigned int SATScore;
+    float distanceTravelled;
+
+    struct Foot
+    {
+        float stepSize()
+        {
+            //get stepSize
+            return {};
+        }
+
+        void stepForward()
+        {
+            //take a step forward
+        }
+    };
+
+    Foot leftFoot;
+    Foot rightFoot;
+
+    void run (int, bool);
+};
+
+void Person::run (int, bool startWithLeftFoot)
+{
+    if (startWithLeftFoot == true) 
+    {
+        leftFoot.stepForward();
+        rightFoot.stepForward();
+    }
+    else
+    {
+        rightFoot.stepForward();
+        leftFoot.stepForward();
+    };
+    distanceTravelled += leftFoot.stepSize() + rightFoot.stepSize();
+}
+
+ /*
+ 2) provide implementations for the member functions you declared in your 10 user-defined types from the previous video outside of your UDT definitions.
+ 3) be sure to write the correct full qualified name for the nested type's member functions.
+ 4) After you finish defining each type/function, click the [run] button.  Clear up any errors or warnings as best you can.
  Commit your changes by clicking on the Source Control panel on the left, entering a message, and click [Commit and push].
- 
  Wait for my code review.
  */
 
@@ -54,8 +91,9 @@ struct Kitchen
 
     struct Chef 
     {
-        bool isCooking = true;
-        bool isTeaching = true;
+        bool isCooking;
+        bool isTeaching;
+        bool isMasterChef;
         char codeName = 'C';
     };
 
@@ -69,11 +107,22 @@ struct Kitchen
         Chef creator;
     };
 
-    void startCookingClass (Chef chef, Recipe recipe);
-
     Recipe currentRecipe;
     Chef masterChef;
+
+    void startCookingClass (Chef c, Recipe r);
 };
+
+//Implementation 1
+void Kitchen::startCookingClass (Chef chef, Recipe recipe)
+{
+    chef.isTeaching = true;
+    recipe.currentStep = 0;
+    if (chef.codeName == recipe.creator.codeName) 
+    {
+        chef.isMasterChef = true;
+    }
+}
 
 /*
  2)
@@ -97,7 +146,7 @@ struct KioskLocator
         char prefix = 'K';
         Kiosk k;
 
-        Kiosk getClosestKiosk();
+        KList getClosestKiosks();
     };
 
     Kiosk closestKiosk;
@@ -105,6 +154,28 @@ struct KioskLocator
     void refreshList (KList k, int initSize);
     void getClosestKiosk (KList klist);
 };
+
+//Implementation 2
+void KioskLocator::refreshList (KList klist, int ) 
+{
+    // fetch initialSize entries of data from klist 
+    klist.getClosestKiosks();
+
+}
+
+KioskLocator::KList KioskLocator::KList::getClosestKiosks() 
+{
+    // return a KList of closestKiosks
+    return {};
+}
+
+void KioskLocator::getClosestKiosk (KList klist) 
+{
+    // set closest kiosk from a KList
+    refreshList (klist,3);
+    closestKiosk.name = 'A';
+    closestKiosk.distance = 0.0f;
+}
 
 /*
  3)
@@ -121,8 +192,23 @@ struct ADSR
         double stageDur = 0.5;
     };
 
-    Stage currentStage (ADSR env1);
+    Stage currentStage;
+    Stage getCurrentStage();
 };
+
+//Implementation 3
+ADSR::Stage ADSR::getCurrentStage() 
+{   
+    if ( currentStage.stageDur > 0 ) 
+    {
+        duration += currentStage.stageDur;
+    } 
+    else
+    {
+        //go to next stage or end
+    }
+    return {};
+}
 
 /*
  4)
@@ -158,6 +244,30 @@ struct Form
     void clearAllCheckBoxes (Form f);
 };
 
+//Implementation 4
+bool Form::mouseOver (TextField) 
+{
+    //return true when mouse is over a certain field
+return {};
+}
+
+bool Form::formIsVisible (char) 
+{
+    //check if form is visible
+    //make it visible if not
+    //return a state
+    return {};
+}
+
+void Form::CheckBox::animateCheckBox (char , CheckBox)
+{
+    /*
+        do funky animation for a UDT CheckBox
+        related to a UDT Field of a certain id
+    */
+}
+
+
 /*
  5)
  */
@@ -184,10 +294,40 @@ struct PresetLibrary
         RandomName rn;
     };
 
-    PresetName generateRandomName (char bank, int presetNumber, float seed);
     bool updatePresets();
+    PresetName generateRandomName (char bank, int presetNumber, float seed);
     PresetLibrary dumpBank (char bank);
 };
+
+//Implementation 5
+
+bool PresetLibrary::updatePresets() 
+{
+    // refresh presetname list
+    return {};
+}
+
+PresetLibrary::PresetName PresetLibrary::generateRandomName (char, int, float) 
+{
+    //come up with a random name for a presetNumber in a bank
+    return {};
+}
+
+PresetLibrary PresetLibrary::dumpBank (char)
+{
+    //dump a whole bank into or from a UDT PresetLibrary
+    //return a full or 'empty' PresetLibrary type
+    return {};
+}
+
+char PresetLibrary::PresetName::RandomName::getCharAt (int, int)
+{
+    /*
+        get some random icon or char/string as preset name
+        from a 2D Collection somewhere
+    */
+    return {};
+}
 
 /*
  6)
@@ -218,6 +358,34 @@ struct FunkyBufferPlayer
     };
 };
 
+//Implementation 6
+
+double getSizeInSamples (int) 
+{
+    //return the size of a Buffer instance
+    return {};
+}
+
+bool FunkyBufferPlayer::Buffer::clearBuffer (int)
+{
+    // empty some buffer really fast
+    // return when done
+    return {};
+}
+
+bool FunkyBufferPlayer::Buffer::copyToSecondaryBuffer (SecondaryBuffer) 
+{
+    //duplicate a buffer into an instance of a SecondaryBuffer
+    return {};
+}
+
+void FunkyBufferPlayer::Buffer::SecondaryBuffer::reverse (int)
+{
+    //some kind of reversi on an instance of a SecondaryBuffer
+    //Get Funky
+}
+
+
 /*
  7)
  */
@@ -240,6 +408,23 @@ struct FlyingFaderBank
     void updateFaders (int numberOfFaders);
 };
 
+//Implementation 7
+void FlyingFaderBank::updateFaders (int)
+{
+    //get status and values of a number of faders
+}
+
+void FlyingFaderBank::Fader::update (int, float, float, float)
+{
+    //update physics animation of a fader
+}
+
+float FlyingFaderBank::Fader::getValue (int)
+{
+    //return some value from fader data
+    return {};
+}
+
 /*
  8)
  */
@@ -257,6 +442,13 @@ struct ScaleGenerator
     Scale goldenRatio;
 };
 
+//Implementation 8
+ScaleGenerator::Scale ScaleGenerator::Scale::generateScaleForOctaves (int, double)
+{
+    //naive scale generation returns as/into ScaleGenerator::Scale UDT
+    return {};
+}
+
 /*
  9)
  */
@@ -271,7 +463,7 @@ struct Meter
     {   
         int w,h,x,y;
         float scaleFactor = 0.5f;
-        int numberOfSegments = 256;
+        int numberOfSegments = 32;
 
         struct Segment
         {
@@ -282,11 +474,25 @@ struct Meter
             void destroy();
             void draw (int segmentIndex);
         };
-
-
         void updateSegment (int meterID, Segment s);
     };
 };
+
+//Implementation 9
+void Meter::VerticalMeter::updateSegment (int, Meter::VerticalMeter::Segment)
+{
+    //update segment graphics style
+}
+
+void Meter::VerticalMeter::Segment::draw (int)
+{
+    //draw an instance of a Segment UDT
+}
+
+void Meter::VerticalMeter::Segment::destroy()
+{
+    //remove an instance of a Segment UDT from memory
+}
 
 /*
  10)
@@ -320,6 +526,23 @@ struct StepSequencer
     StepData getCurrentStepData();
 };
 
+//Implementation 10
+StepSequencer::StepData StepSequencer::getCurrentStepData() 
+{
+    // get all current StepData return in a StepData UDT 
+    return {};
+}
+
+void StepSequencer::stepSequence(unsigned int, bool)
+{
+    //move to next stage in sequence
+} 
+
+int StepSequencer::getCurrentStage(unsigned int)
+{
+    //get stage number of current row with an ID
+    return {};
+} 
 
 #include <iostream>
 int main()
